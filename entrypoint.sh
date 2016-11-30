@@ -20,6 +20,8 @@ fi
 
 /usr/sbin/startup.sh
 
+/usr/sbin/sshd
+
 rm /docker-entrypoint-initdb.d/init_europe.sql 2> /dev/null || :
 
 exec "$@"
