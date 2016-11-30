@@ -5,6 +5,10 @@ MAINTAINER Jose M. Fernandez-Alba <jm.fernandezalba@commonms.com>
 # Database schema
 COPY init_europe.sql /docker-entrypoint-initdb.d/
 
+# Prepare environment
+VOLUME /servicios/was7/hubriesgos
+WORKDIR /servicios/was7/hubriesgos
+
 # Entrypoint inits and starts Oracle database and SSH
 COPY entrypoint.sh /sbin/
 RUN chmod 755 /sbin/entrypoint.sh
