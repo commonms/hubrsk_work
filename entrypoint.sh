@@ -14,6 +14,13 @@ if [ "$IS_ISBAN" = "true" ]; then
     export NO_PROXY=$no_proxy
 
     echo "Acquire::http::Proxy \"$http_proxy\";" > /etc/apt/apt.conf
+
+    if [[ ! $(git rev-parse --is-inside-work-tree 2> /dev/null) ]]; then
+
+        git clone http://$GIT_USER:$GIT_PASS@172.31.97.210/HUBRSK/hubrsk_deploy_eq.git --branch Jenkins_Pro --single-branch .
+
+        mkdir -p {files,filesBrasil,filesLatam}/{adapter/{logs,out},Inbox,installer/{backup,logs,releases}}
+    fi
 else
     echo Configuring default.
 fi
